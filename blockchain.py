@@ -24,3 +24,4 @@ def addNewBlock(account_from, account_to, amount):
   }
   blockchain.append(block)
 
+# @deeplogger

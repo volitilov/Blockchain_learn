@@ -1,8 +1,10 @@
 # простой пример создание хеша данных с помощью sha256
+# и усложением создания хеша с помощью алгоритма консенсуса
+# Proof Of Work
 
 import hashlib
 import json
-
+from proof_of_work import mine_proof_of_work
 
 account = {
   "name": "Bob",
@@ -12,6 +14,13 @@ account = {
 
 
 def data_to_hash(data):
+  # майним (ищем) proof-значение, для получения хеша с
+  # доказательством работы
+  proof = mine_proof_of_work(data)
+
+  # добавляем proof-значение 
+  data['proof'] = proof
+
   # преобразование в строку
   str_data = json.dumps(data, sort_keys=True)
 
